@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useLang } from "@/contexts/LanguageContext";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Phone, Mail, MapPin, Send, CheckCircle } from "lucide-react";
+import LazyMap from "@/components/LazyMap";
 
 export default function ContactSection() {
   const { t } = useLang();
@@ -49,9 +50,9 @@ export default function ContactSection() {
           >
             <div className="space-y-6">
               {[
-                { icon: Phone, label: t("Telephone", "Phone"), value: "+237 622 169 546 / 672 741 295" },
+                { icon: Phone, label: t("Téléphone", "Phone"), value: "+237 622 169 546 / 672 741 295" },
                 { icon: Mail, label: "Email", value: "biexadvisor@gmail.com" },
-                { icon: MapPin, label: t("Localisation", "Location"), value: "Bld de l'URSS, Bastos, Yaounde - Cameroun" },
+                { icon: MapPin, label: t("Localisation", "Location"), value: "Bld de l'URSS, Bastos, Yaoundé - Cameroun" },
               ].map((item, i) => (
                 <motion.div
                   key={i}
@@ -77,25 +78,12 @@ export default function ContactSection() {
               ))}
             </div>
 
-            {/* Google Map */}
-            <div
-              className="rounded-xl overflow-hidden h-64"
-              style={{
-                border: "1px solid rgba(220,53,69,0.12)",
-                boxShadow: "0 4px 20px -4px rgba(59,130,220,0.08)",
-              }}
-            >
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.705!2d11.504!3d3.885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM8KwNTMnMDYuMCJOIDExwrAzMCcxNC40IkU!5e0!3m2!1sfr!2scm!4v1"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title={t("Localisation Biex Conseils", "Biex Conseils location")}
-              />
-            </div>
+            {/* Google Map - lazy loaded */}
+            <LazyMap
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.705!2d11.504!3d3.885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM8KwNTMnMDYuMCJOIDExwrAzMCcxNC40IkU!5e0!3m2!1sfr!2scm!4v1"
+              title={t("Localisation Biex Conseils", "Biex Conseils location")}
+              height="h-48 sm:h-64"
+            />
           </motion.div>
 
           {/* Form */}
@@ -267,7 +255,7 @@ export default function ContactSection() {
                       e.currentTarget.style.borderColor = "hsl(var(--border))";
                       e.currentTarget.style.boxShadow = "none";
                     }}
-                    placeholder={t("Decrivez votre besoin...", "Describe your needs...")}
+                    placeholder={t("Décrivez votre besoin...", "Describe your needs...")}
                   />
                 </div>
 

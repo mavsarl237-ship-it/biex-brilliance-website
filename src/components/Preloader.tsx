@@ -6,7 +6,7 @@ export default function Preloader() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2200);
+    const timer = setTimeout(() => setLoading(false), 1500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -21,7 +21,7 @@ export default function Preloader() {
           {/* Animated background shapes */}
           <div className="absolute inset-0 overflow-hidden">
             <motion.div
-              className="absolute w-96 h-96 rounded-full opacity-10"
+              className="absolute w-48 sm:w-96 h-48 sm:h-96 rounded-full opacity-10"
               style={{
                 background: "radial-gradient(circle, rgba(59,130,220,0.3), transparent 70%)",
                 top: "20%",
@@ -31,7 +31,7 @@ export default function Preloader() {
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
             <motion.div
-              className="absolute w-64 h-64 rounded-full opacity-10"
+              className="absolute w-32 sm:w-64 h-32 sm:h-64 rounded-full opacity-10"
               style={{
                 background: "radial-gradient(circle, rgba(59,130,220,0.2), transparent 70%)",
                 bottom: "15%",
@@ -78,7 +78,7 @@ export default function Preloader() {
                 }}
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
-                transition={{ duration: 2, ease: "easeInOut" }}
+                transition={{ duration: 1.3, ease: "easeInOut" }}
               />
             </div>
 

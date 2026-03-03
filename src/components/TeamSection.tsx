@@ -11,7 +11,7 @@ const team = [
   {
     name: "NOUMBA BAYIHA II Sidoine Charlie",
     photo: team1,
-    roleFr: "Fondateur / Associe - Gerant",
+    roleFr: "Fondateur / Associé - Gérant",
     roleEn: "Founder / Managing Partner",
     qualifications: [
       "Chartered Accountant | ACCA Fellow member, UK",
@@ -25,51 +25,51 @@ const team = [
   {
     name: "MAGNAN AWONO ATEMENGUE Bertrand",
     photo: team2,
-    roleFr: "Manager - Associe",
+    roleFr: "Manager - Associé",
     roleEn: "Manager - Partner",
     qualifications: [
-      "Expert en Audit, evaluation, fiscalite",
-      "M.Sc - Audit & Controle - UCAC",
-      "Certificat int'l audit legal des comptes - CNAM INTEC",
+      "Expert en Audit, évaluation, fiscalité",
+      "M.Sc - Audit & Contrôle - UCAC",
+      "Certificat int'l audit légal des comptes - CNAM INTEC",
     ],
   },
   {
     name: "AYANGMA Stanislas Yannick Richard",
     photo: team3,
-    roleFr: "Manager - Associe",
+    roleFr: "Manager - Associé",
     roleEn: "Manager - Partner",
     qualifications: [
-      "Expert en elaboration et evaluation de projets",
-      "Master en Analyse des projets - Universite Rennes I",
-      "DESS en Analyse et evaluation des projets - U. Yde II",
-      "Maitrise, Economie de gestion - UCAC",
+      "Expert en élaboration et évaluation de projets",
+      "Master en Analyse des projets - Université Rennes I",
+      "DESS en Analyse et évaluation des projets - U. Yde II",
+      "Maîtrise, Économie de gestion - UCAC",
     ],
   },
   {
     name: "BALEP BANGMBE Arnold",
     photo: team4,
-    roleFr: "Manager - Associe",
+    roleFr: "Manager - Associé",
     roleEn: "Manager - Partner",
     qualifications: [
-      "Expert en elaboration, suivi, evaluation des projets de developpement - AFD",
-      "Specialiste DD & RSE",
+      "Expert en élaboration, suivi, évaluation des projets de développement - AFD",
+      "Spécialiste DD & RSE",
       "Accompagnement entrepreneurial",
     ],
   },
   {
     name: "MAVOUTIO Sulamithe Laure",
     photo: team5,
-    roleFr: "Associee",
+    roleFr: "Associée",
     roleEn: "Partner",
     qualifications: [
-      "Juriste - Proceduriere",
-      "Specialiste RH",
+      "Juriste - Procédurière",
+      "Spécialiste RH",
     ],
   },
 ];
 
 export default function TeamSection() {
-  const { t } = useLang();
+  const { lang, t } = useLang();
   const { ref, isVisible } = useScrollAnimation();
 
   return (
@@ -82,16 +82,17 @@ export default function TeamSection() {
           className="text-center mb-16"
         >
           <span className="font-subheading font-semibold text-sm uppercase tracking-[0.2em]" style={{ color: "hsl(214 65% 52%)" }}>
-            {t("Notre equipe", "Our team")}
+            {t("Notre équipe", "Our team")}
           </span>
           <h2 className="section-title mt-3 mb-4">
             {t("Nos principaux intervenants", "Our Key Team Members")}
           </h2>
           <div className="red-separator w-16 mx-auto mb-6" />
           <p className="section-subtitle mx-auto">
-            {t(
-              "Une equipe d'experts pluridisciplinaires au service de votre reussite.",
-              "A multidisciplinary team of experts dedicated to your success."
+            {lang === "fr" ? (
+              <>Une équipe d'<strong className="text-foreground">experts pluridisciplinaires</strong> au service de votre <strong className="text-foreground">réussite</strong>.</>
+            ) : (
+              <>A <strong className="text-foreground">multidisciplinary team</strong> of experts dedicated to your <strong className="text-foreground">success</strong>.</>
             )}
           </p>
         </motion.div>
@@ -109,7 +110,7 @@ export default function TeamSection() {
                 border: "1px solid hsl(var(--border))",
               }}
             >
-              <div className="relative h-80 overflow-hidden bg-muted">
+              <div className="relative h-60 sm:h-80 overflow-hidden bg-muted">
                 <img
                   src={member.photo}
                   alt={member.name}
@@ -139,7 +140,7 @@ export default function TeamSection() {
                   </span>
                 </div>
               </div>
-              <div className="p-6">
+              <div className="p-6 text-center sm:text-left">
                 <h3 className="font-heading font-bold text-lg mb-3 text-foreground">{member.name}</h3>
                 <ul className="space-y-1.5">
                   {member.qualifications.map((q, j) => (

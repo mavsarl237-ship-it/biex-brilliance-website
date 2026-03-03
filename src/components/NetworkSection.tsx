@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useLang } from "@/contexts/LanguageContext";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { MapPin, Clock } from "lucide-react";
+import LazyMap from "@/components/LazyMap";
 
 const openOffices = [
   {
@@ -13,7 +14,7 @@ const openOffices = [
     mapEmbed: "https://maps.google.com/maps?width=100%25&height=600&hl=fr&q=Zenith+University+College,+Accra,+Ghana+(Biex+Advisor+Ghana)&t=&z=15&ie=UTF8&iwloc=B&output=embed",
   },
   {
-    city: "Yaounde",
+    city: "Yaoundé",
     country: (t: (fr: string, en: string) => string) => t("Cameroun", "Cameroon"),
     address: "Bastos - Boulevard de l'URSS",
     nameFr: "Biex Conseils Cameroun",
@@ -22,9 +23,9 @@ const openOffices = [
   },
   {
     city: "Dakar",
-    country: (t: (fr: string, en: string) => string) => t("Senegal", "Senegal"),
-    address: "Keur Gorgui Immeuble Hermes I, 3e Etage N 22 BP 10723, Dakar Liberte",
-    nameFr: "Biex Conseils Senegal",
+    country: (t: (fr: string, en: string) => string) => t("Sénégal", "Senegal"),
+    address: "Keur Gorgui Immeuble Hermès I, 3e Étage N 22 BP 10723, Dakar Liberté",
+    nameFr: "Biex Conseils Sénégal",
     nameEn: "Biex Conseils Senegal",
     mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3858.742057395029!2d-17.46467022416805!3d14.727142074003265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x18172b05b38ed6a5%3A0xb3cf51a444d32062!2sKeur%20Gorgui%2C%20Dakar%2C%20S%C3%A9n%C3%A9gal!5e0!3m2!1sfr!2scm!4v1714088000000!5m2!1sfr!2scm",
   },
@@ -60,7 +61,7 @@ const upcomingOffices = [
     mapEmbed: "https://maps.google.com/maps?width=100%25&height=600&hl=fr&q=Niamey,+Niger&t=&z=12&ie=UTF8&iwloc=B&output=embed"
   },
   {
-    city: "Lome",
+    city: "Lomé",
     country: (t: (fr: string, en: string) => string) => t("Togo", "Togo"),
     statusFr: "Bientôt",
     statusEn: "Soon",
@@ -82,10 +83,10 @@ export default function NetworkSection() {
           className="text-center mb-16"
         >
           <span className="font-subheading font-semibold text-sm uppercase tracking-[0.2em]" style={{ color: "hsl(214 65% 52%)" }}>
-            {t("Notre reseau", "Our network")}
+            {t("Notre réseau", "Our network")}
           </span>
           <h2 className="section-title mt-3 mb-4">
-            {t("Bureaux du reseau Biex", "Biex Network Offices")}
+            {t("Bureaux du réseau Biex", "Biex Network Offices")}
           </h2>
           <div className="red-separator w-16 mx-auto" />
         </motion.div>
@@ -97,14 +98,14 @@ export default function NetworkSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
-              className="rounded-2xl p-8 card-hover relative overflow-hidden blue-border-top shimmer"
+              className="rounded-2xl p-8 card-hover relative overflow-hidden blue-border-top shimmer text-center sm:text-left"
               style={{
                 background: "hsl(var(--card))",
                 border: "1px solid hsl(var(--border))",
               }}
             >
               <div
-                className="w-12 h-12 rounded-full flex items-center justify-center mb-4"
+                className="w-12 h-12 rounded-full flex items-center justify-center mb-4 mx-auto sm:mx-0"
                 style={{ background: "rgba(59,130,220,0.08)" }}
               >
                 <MapPin className="w-6 h-6" style={{ color: "hsl(358 73% 52%)" }} />
@@ -118,22 +119,12 @@ export default function NetworkSection() {
               </p>
               <p className="text-sm text-muted-foreground font-body mb-5">{office.address}</p>
 
-              {/* Google Map */}
-              <div
-                className="rounded-xl overflow-hidden h-40 w-full"
-                style={{ border: "1px solid rgba(220,53,69,0.12)" }}
-              >
-                <iframe
-                  src={office.mapEmbed}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title={`Localisation Biex ${office.city}`}
-                />
-              </div>
+              {/* Google Map - lazy loaded */}
+              <LazyMap
+                src={office.mapEmbed}
+                title={`Localisation Biex ${office.city}`}
+                height="h-28 sm:h-40"
+              />
             </motion.div>
           ))}
         </div>
@@ -152,7 +143,7 @@ export default function NetworkSection() {
           <div className="flex items-center gap-3 mb-6">
             <Clock className="w-5 h-5" style={{ color: "hsl(358 73% 52%)" }} />
             <h3 className="font-heading font-bold text-lg text-foreground">
-              {t("Bureaux a venir", "Upcoming Offices")}
+              {t("Bureaux à venir", "Upcoming Offices")}
             </h3>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
@@ -181,7 +172,7 @@ export default function NetworkSection() {
 
                 {/* Google Map pour Bureaux a venir */}
                 <div
-                  className="rounded-xl overflow-hidden h-32 w-full grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none group-hover:pointer-events-auto"
+                  className="rounded-xl overflow-hidden h-24 sm:h-32 w-full grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none group-hover:pointer-events-auto"
                   style={{ border: "1px solid rgba(220,53,69,0.12)" }}
                 >
                   <iframe

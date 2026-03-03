@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap&font-display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -95,8 +95,16 @@
     @apply border-border;
   }
 
+  html,
+  body {
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
   body {
     @apply bg-background text-foreground font-body antialiased;
+    touch-action: manipulation;
+    min-height: 100dvh;
   }
 
   h1,
@@ -111,7 +119,7 @@
 
 @layer components {
   .section-padding {
-    @apply px-4 sm:px-6 lg:px-8 py-20 md:py-28;
+    @apply px-4 sm:px-6 lg:px-8 py-12 sm:py-20 md:py-28;
   }
 
   .container-biex {
@@ -141,6 +149,16 @@
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(220, 53, 69, 0.15);
+  }
+
+  /* Reduce GPU-heavy blur on mobile */
+  @media (max-width: 640px) {
+
+    .glass-card,
+    .glass-card-light {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
   }
 
   .card-hover {

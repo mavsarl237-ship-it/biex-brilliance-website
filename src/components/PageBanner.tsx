@@ -8,10 +8,10 @@ interface PageBannerProps {
 
 export default function PageBanner({ title, subtitle }: PageBannerProps) {
     return (
-        <section className="relative py-24 md:py-32 overflow-hidden">
+        <section className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
             {/* Background */}
             <div className="absolute inset-0">
-                <img src={heroImg} alt="" className="w-full h-full object-cover" />
+                <img src={heroImg} alt="" className="w-full h-full object-cover" loading="lazy" />
                 <div className="absolute inset-0" style={{
                     background: "linear-gradient(135deg, rgba(10,22,40,0.95) 0%, rgba(10,22,40,0.85) 100%)"
                 }} />

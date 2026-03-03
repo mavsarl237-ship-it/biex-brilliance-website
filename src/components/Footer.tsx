@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 import logo from "@/assets/logo.jpeg";
 
 export default function Footer() {
-  const { t } = useLang();
+  const { lang, t } = useLang();
 
   const links = [
     { labelFr: "Accueil", labelEn: "Home", href: "/" },
-    { labelFr: "A propos", labelEn: "About", href: "/about" },
+    { labelFr: "À propos", labelEn: "About", href: "/about" },
     { labelFr: "Services", labelEn: "Services", href: "/services" },
-    { labelFr: "Equipe", labelEn: "Team", href: "/team" },
-    { labelFr: "Reseau", labelEn: "Network", href: "/network" },
+    { labelFr: "Équipe", labelEn: "Team", href: "/team" },
+    { labelFr: "Réseau", labelEn: "Network", href: "/network" },
     { labelFr: "Contact", labelEn: "Contact", href: "/contact" },
   ];
 
@@ -62,9 +62,14 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-white/50 text-sm font-body leading-relaxed max-w-md mb-4">
-              {t(
-                "Cabinet d'audit et de conseils en gestion, partenaire polyvalent qui apporte expertise technique et conseil strategique pour securiser et developper les activites de toute structure.",
-                "Audit and management consulting firm, a versatile partner providing technical expertise and strategic advice to secure and grow the activities of any organization."
+              {lang === "fr" ? (
+                <>
+                  <strong className="text-white/80">Cabinet d'audit et de conseils</strong> en gestion, <strong className="text-white/80">partenaire polyvalent</strong> qui apporte <strong className="text-white/80">expertise technique</strong> et <strong className="text-white/80">conseil stratégique</strong> pour <strong className="text-white/80">sécuriser</strong> et <strong className="text-white/80">développer</strong> les activités de toute structure.
+                </>
+              ) : (
+                <>
+                  <strong className="text-white/80">Audit and management consulting firm</strong>, a <strong className="text-white/80">versatile partner</strong> providing <strong className="text-white/80">technical expertise</strong> and <strong className="text-white/80">strategic advice</strong> to <strong className="text-white/80">secure</strong> and <strong className="text-white/80">grow</strong> the activities of any organization.
+                </>
               )}
             </p>
             <p className="text-white/30 text-xs font-body">
@@ -98,7 +103,7 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h4 className="font-heading font-bold text-sm mb-4" style={{ color: "hsl(214 60% 68%)" }}>
-              {t("Coordonnees", "Contact info")}
+              {t("Coordonnées", "Contact info")}
             </h4>
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-sm">
@@ -111,7 +116,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2 text-sm">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" style={{ color: "hsl(358 73% 52%)" }} />
-                <span className="text-white/50 font-body">Bld de l'URSS, Bastos<br />Yaounde - Cameroun</span>
+                <span className="text-white/50 font-body">Bld de l'URSS, Bastos<br />Yaoundé - Cameroun</span>
               </li>
             </ul>
           </div>
@@ -122,10 +127,10 @@ export default function Footer() {
           style={{ borderTop: "1px solid rgba(220,53,69,0.08)" }}
         >
           <p className="text-white/30 text-xs font-body">
-            &copy; {new Date().getFullYear()} Biex Conseils. {t("Tous droits reserves.", "All rights reserved.")}
+            &copy; {new Date().getFullYear()} Biex Conseils. {t("Tous droits réservés.", "All rights reserved.")}
           </p>
           <p className="text-white/20 text-xs font-body">
-            {t("Mentions legales", "Legal notice")}
+            {t("Mentions légales", "Legal notice")}
           </p>
         </div>
       </div>

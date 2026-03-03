@@ -11,88 +11,88 @@ import { useState } from "react";
 const services = [
   {
     icon: ClipboardCheck,
-    titleFr: "Audit et Evaluation",
+    titleFr: "Audit et Évaluation",
     titleEn: "Audit & Evaluation",
-    descFr: "Commissariat aux comptes, audit comptable et financier, audit interne, operationnel, fiscal, strategique, RSE, forensic et des systemes d'information.",
+    descFr: "Commissariat aux comptes, audit comptable et financier, audit interne, opérationnel, fiscal, stratégique, RSE, forensic et des systèmes d'information.",
     descEn: "Statutory audit, financial & accounting audit, internal audit, operational, tax, strategic, CSR, forensic and IT systems audit.",
-    detailsFr: ["Commissariat aux comptes", "Audit comptable et financier (legal)", "Audit interne et operationnel", "Audit fiscal et strategique", "Audit RSE / extra-financier", "Audit forensic (lutte contre la fraude)", "Audit des SI", "Certification des comptes annuels", "Diagnostic financier et analyse des risques"],
+    detailsFr: ["Commissariat aux comptes", "Audit comptable et financier (légal)", "Audit interne et opérationnel", "Audit fiscal et stratégique", "Audit RSE / extra-financier", "Audit forensic (lutte contre la fraude)", "Audit des SI", "Certification des comptes annuels", "Diagnostic financier et analyse des risques"],
     detailsEn: ["Statutory audit", "Financial & accounting audit", "Internal & operational audit", "Tax & strategic audit", "CSR / ESG audit", "Forensic audit (fraud prevention)", "IT systems audit", "Annual accounts certification", "Financial diagnosis & risk analysis"],
   },
   {
     icon: Building2,
     titleFr: "Restructuration d'entreprise",
     titleEn: "Corporate Restructuring",
-    descFr: "Due diligence, evaluation d'entreprises, plans d'affaires, fusions-acquisitions, privatisation et liquidation.",
+    descFr: "Due diligence, évaluation d'entreprises, plans d'affaires, fusions-acquisitions, privatisation et liquidation.",
     descEn: "Due diligence, business valuation, business plans, mergers & acquisitions, privatization and liquidation.",
-    detailsFr: ["Due diligence - Evaluation d'entreprises", "Plans d'affaires - Fusions et acquisitions", "Restructuration d'entreprises", "Privatisation - Liquidation"],
+    detailsFr: ["Due diligence - Évaluation d'entreprises", "Plans d'affaires - Fusions et acquisitions", "Restructuration d'entreprises", "Privatisation - Liquidation"],
     detailsEn: ["Due diligence - Business valuation", "Business plans - Mergers & acquisitions", "Corporate restructuring", "Privatization - Liquidation"],
   },
   {
     icon: ShieldCheck,
-    titleFr: "Audit Organisationnel et Qualite",
+    titleFr: "Audit Organisationnel et Qualité",
     titleEn: "Organizational & Quality Audit",
-    descFr: "Evaluation des processus internes, efficacite operationnelle, systemes de management de la qualite (ISO).",
+    descFr: "Évaluation des processus internes, efficacité opérationnelle, systèmes de management de la qualité (ISO).",
     descEn: "Internal process assessment, operational efficiency, quality management systems (ISO).",
-    detailsFr: ["Audit des processus et procedures internes", "Evaluation de l'efficacite operationnelle", "Mise en place de systemes de management de la qualite"],
+    detailsFr: ["Audit des processus et procédures internes", "Évaluation de l'efficacité opérationnelle", "Mise en place de systèmes de management de la qualité"],
     detailsEn: ["Internal process & procedure audit", "Operational efficiency evaluation", "Quality management system implementation"],
   },
   {
     icon: BookOpen,
-    titleFr: "Comptabilite",
+    titleFr: "Comptabilité",
     titleEn: "Accounting",
-    descFr: "Organisation et tenue des comptes, budgets previsionnels, consolidation, normes OHADA, IFRS, US GAAP.",
+    descFr: "Organisation et tenue des comptes, budgets prévisionnels, consolidation, normes OHADA, IFRS, US GAAP.",
     descEn: "Account organization & management, budgets, consolidation, OHADA, IFRS, US GAAP standards.",
-    detailsFr: ["Organisation, tenue et consolidation des comptes", "Budgets previsionnels", "Normes OHADA, IFRS, US GAAP", "Inventaires physiques", "Traduction des etats financiers"],
+    detailsFr: ["Organisation, tenue et consolidation des comptes", "Budgets prévisionnels", "Normes OHADA, IFRS, US GAAP", "Inventaires physiques", "Traduction des états financiers"],
     detailsEn: ["Account organization & consolidation", "Forecasting budgets", "OHADA, IFRS, US GAAP standards", "Physical inventories", "Financial statement translation"],
   },
   {
     icon: Briefcase,
     titleFr: "Conseils en gestion",
     titleEn: "Management Consulting",
-    descFr: "Business plans, tableaux de bord, investigation de fraudes, risk management, strategie d'entreprise.",
+    descFr: "Business plans, tableaux de bord, investigation de fraudes, risk management, stratégie d'entreprise.",
     descEn: "Business plans, dashboards, fraud investigation, risk management, business strategy.",
-    detailsFr: ["Business plans et bilans previsionnels", "Tableaux de bords et KPI", "Investigation de fraudes", "Risk management", "Strategie marketing et GRC"],
+    detailsFr: ["Business plans et bilans prévisionnels", "Tableaux de bords et KPI", "Investigation de fraudes", "Risk management", "Stratégie marketing et GRC"],
     detailsEn: ["Business plans & forecasts", "Dashboards & KPIs", "Fraud investigation", "Risk management", "Marketing strategy & CRM"],
   },
   {
     icon: Users,
     titleFr: "Administration du personnel & Paie",
     titleEn: "HR Administration & Payroll",
-    descFr: "Gestion administrative, elaboration des bulletins de paie, mise en conformite RH.",
+    descFr: "Gestion administrative, élaboration des bulletins de paie, mise en conformité RH.",
     descEn: "Administrative management, payroll processing, HR compliance.",
-    detailsFr: ["Gestion administrative du personnel", "Elaboration et controle des bulletins de paie", "Mise en conformite RH", "Procedures et outils RH"],
+    detailsFr: ["Gestion administrative du personnel", "Élaboration et contrôle des bulletins de paie", "Mise en conformité RH", "Procédures et outils RH"],
     detailsEn: ["Personnel administrative management", "Payroll processing & control", "HR compliance", "HR procedures & tools"],
   },
   {
     icon: Calculator,
-    titleFr: "Fiscalite",
+    titleFr: "Fiscalité",
     titleEn: "Taxation",
-    descFr: "Optimisation fiscale, declarations sociales et fiscales, assistance en controle et redressements.",
+    descFr: "Optimisation fiscale, déclarations sociales et fiscales, assistance en contrôle et redressements.",
     descEn: "Tax optimization, social & tax declarations, assistance with audits and adjustments.",
-    detailsFr: ["Optimisation fiscale reglementaire", "Declarations sociales et fiscales", "Assistance en controle et redressements", "Conseil en obligations legales"],
+    detailsFr: ["Optimisation fiscale réglementaire", "Déclarations sociales et fiscales", "Assistance en contrôle et redressements", "Conseil en obligations légales"],
     detailsEn: ["Regulatory tax optimization", "Social & tax declarations", "Audit assistance & adjustments", "Legal obligations advisory"],
   },
   {
     icon: Monitor,
     titleFr: "Digitalisation des processus",
     titleEn: "Process Digitalization",
-    descFr: "Analyse et optimisation des processus, solutions digitales d'automatisation, amelioration de la productivite.",
+    descFr: "Analyse et optimisation des processus, solutions digitales d'automatisation, amélioration de la productivité.",
     descEn: "Process analysis & optimization, digital automation solutions, productivity improvement.",
-    detailsFr: ["Analyse et optimisation des processus metier", "Solutions digitales d'automatisation", "Amelioration de la productivite et reduction des couts"],
+    detailsFr: ["Analyse et optimisation des processus métier", "Solutions digitales d'automatisation", "Amélioration de la productivité et réduction des coûts"],
     detailsEn: ["Business process analysis & optimization", "Digital automation solutions", "Productivity improvement & cost reduction"],
   },
   {
     icon: Scale,
     titleFr: "Juridique",
     titleEn: "Legal",
-    descFr: "Creation d'entreprise, droit des affaires, audit juridique et social, planification fiscale.",
+    descFr: "Création d'entreprise, droit des affaires, audit juridique et social, planification fiscale.",
     descEn: "Business formation, business law, legal & social audit, tax planning.",
-    detailsFr: ["Formalites de creation d'entreprise", "Conseil en droit des affaires", "Audit juridique et social", "Secretariat juridique", "Assistance au contentieux"],
+    detailsFr: ["Formalités de création d'entreprise", "Conseil en droit des affaires", "Audit juridique et social", "Secrétariat juridique", "Assistance au contentieux"],
     detailsEn: ["Business formation formalities", "Business law advisory", "Legal & social audit", "Legal secretariat", "Litigation assistance"],
   },
   {
     icon: HeartHandshake,
-    titleFr: "Securite sociale & Retraite",
+    titleFr: "Sécurité sociale & Retraite",
     titleEn: "Social Security & Retirement",
     descFr: "Conseil CNPS, constitution de dossiers retraite, simulation et optimisation des droits sociaux.",
     descEn: "CNPS advisory, retirement file management, social benefits simulation & optimization.",
@@ -101,38 +101,38 @@ const services = [
   },
   {
     icon: BarChart3,
-    titleFr: "Performance commerciale et financiere",
+    titleFr: "Performance commerciale et financière",
     titleEn: "Commercial & Financial Performance",
-    descFr: "Analyse des performances commerciales, optimisation des processus, gestion financiere.",
+    descFr: "Analyse des performances commerciales, optimisation des processus, gestion financière.",
     descEn: "Commercial performance analysis, process optimization, financial management.",
-    detailsFr: ["Analyse des performances commerciales", "Optimisation des processus de vente", "Amelioration de la gestion financiere"],
+    detailsFr: ["Analyse des performances commerciales", "Optimisation des processus de vente", "Amélioration de la gestion financière"],
     detailsEn: ["Commercial performance analysis", "Sales process optimization", "Financial management improvement"],
   },
   {
     icon: FileSearch,
-    titleFr: "Evaluation d'entreprises & projets",
+    titleFr: "Évaluation d'entreprises & projets",
     titleEn: "Business & Project Evaluation",
-    descFr: "Evaluation de valeur, faisabilite, etudes d'impact, montage de dossiers de financement.",
+    descFr: "Évaluation de valeur, faisabilité, études d'impact, montage de dossiers de financement.",
     descEn: "Business valuation, feasibility, impact studies, financing applications.",
-    detailsFr: ["Evaluation de la valeur d'entreprise", "Etudes de faisabilite et d'impact", "Suivi-evaluation de projets", "Montage de dossiers de financement"],
+    detailsFr: ["Évaluation de la valeur d'entreprise", "Études de faisabilité et d'impact", "Suivi-évaluation de projets", "Montage de dossiers de financement"],
     detailsEn: ["Business valuation", "Feasibility & impact studies", "Project monitoring & evaluation", "Financing file preparation"],
   },
   {
     icon: GraduationCap,
-    titleFr: "Formation & Renforcement des capacites",
+    titleFr: "Formation & Renforcement des capacités",
     titleEn: "Training & Capacity Building",
-    descFr: "Formations en management, developpement des competences, seminaires professionnels.",
+    descFr: "Formations en management, développement des compétences, séminaires professionnels.",
     descEn: "Management training, skills development, professional seminars.",
-    detailsFr: ["Formations en management d'entreprise", "Developpement des competences", "Seminaires de formation professionnels", "Services d'archivage electronique"],
+    detailsFr: ["Formations en management d'entreprise", "Développement des compétences", "Séminaires de formation professionnels", "Services d'archivage électronique"],
     detailsEn: ["Business management training", "Skills development", "Professional training seminars", "Electronic archiving services"],
   },
   {
     icon: UserPlus,
-    titleFr: "Mise a disposition du personnel",
+    titleFr: "Mise à disposition du personnel",
     titleEn: "Staff Outsourcing",
-    descFr: "Recrutement, interim professionnel, delegation de competences specialisees.",
+    descFr: "Recrutement, intérim professionnel, délégation de compétences spécialisées.",
     descEn: "Recruitment, professional staffing, specialized skills delegation.",
-    detailsFr: ["Recrutement", "Interim professionnel", "Delegation de competences specialisee"],
+    detailsFr: ["Recrutement", "Intérim professionnel", "Délégation de compétences spécialisée"],
     detailsEn: ["Recruitment", "Professional staffing", "Specialized skills delegation"],
   },
   {
@@ -146,17 +146,17 @@ const services = [
   },
   {
     icon: Rocket,
-    titleFr: "Strategies de croissance",
+    titleFr: "Stratégies de croissance",
     titleEn: "Growth Strategies",
-    descFr: "Strategie d'entreprise, analyse de marche, planification strategique, diagnostic et transformation.",
+    descFr: "Stratégie d'entreprise, analyse de marché, planification stratégique, diagnostic et transformation.",
     descEn: "Business strategy, market analysis, strategic planning, diagnostics and transformation.",
-    detailsFr: ["Actualisation de la strategie d'entreprise", "Analyse de marche et positionnement", "Planification strategique", "Structuration et transformation"],
+    detailsFr: ["Actualisation de la stratégie d'entreprise", "Analyse de marché et positionnement", "Planification stratégique", "Structuration et transformation"],
     detailsEn: ["Business strategy update", "Market analysis & positioning", "Strategic planning", "Structuring & transformation"],
   },
 ];
 
 export default function Services() {
-  const { t } = useLang();
+  const { lang, t } = useLang();
   const { ref, isVisible } = useScrollAnimation();
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
@@ -173,13 +173,14 @@ export default function Services() {
             {t("Nos expertises", "Our expertise")}
           </span>
           <h2 className="section-title mt-3 mb-4">
-            {t("Domaines d'intervention strategiques", "Strategic Areas of Expertise")}
+            {t("Domaines d'intervention stratégiques", "Strategic Areas of Expertise")}
           </h2>
           <div className="red-separator w-16 mx-auto mb-6" />
           <p className="section-subtitle mx-auto">
-            {t(
-              "Un accompagnement complet et sur mesure pour securiser et developper vos activites.",
-              "Comprehensive, tailored support to secure and grow your business."
+            {lang === "fr" ? (
+              <>Un accompagnement complet et sur mesure pour <strong className="text-foreground">sécuriser</strong> et <strong className="text-foreground">développer vos activités</strong>.</>
+            ) : (
+              <>Comprehensive, tailored support to <strong className="text-foreground">secure</strong> and <strong className="text-foreground">grow your business</strong>.</>
             )}
           </p>
         </motion.div>

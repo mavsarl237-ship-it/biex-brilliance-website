@@ -4,7 +4,7 @@ import { useTypingEffect } from "@/hooks/useTypingEffect";
 import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-meeting.jpg";
 
-const wordsFr = ["Performance", "Croissance", "Conformite", "Transformation", "Structuration", "Rentabilite"];
+const wordsFr = ["Performance", "Croissance", "Conformité", "Transformation", "Structuration", "Rentabilité"];
 const wordsEn = ["Performance", "Growth", "Compliance", "Transformation", "Structuring", "Profitability"];
 
 export default function Hero() {
@@ -16,7 +16,7 @@ export default function Hero() {
     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
-        <img src={heroImg} alt="" className="w-full h-full object-cover" />
+        <img src={heroImg} alt="" className="w-full h-full object-cover" loading="lazy" />
         <div className="absolute inset-0" style={{
           background: "linear-gradient(135deg, rgba(10,22,40,0.95) 0%, rgba(10,22,40,0.82) 40%, rgba(10,22,40,0.65) 100%)"
         }} />
@@ -25,8 +25,8 @@ export default function Hero() {
         }} />
       </div>
 
-      {/* Floating decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Floating decorative elements — hidden on mobile for performance */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden sm:block">
         {/* Blue orb */}
         <motion.div
           className="absolute w-72 h-72 rounded-full"
@@ -82,21 +82,22 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 container-biex section-padding pt-28 md:pt-32">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl mx-auto sm:mx-0">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 2.5 }}
+            className="text-center sm:text-left"
           >
             {/* Badge */}
-            <div className="badge-blue mb-8">
+            <div className="badge-blue mb-8 mx-auto sm:mx-0">
               <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: "hsl(214 65% 55%)" }} />
               <span className="text-white/80 text-sm font-medium font-subheading">
                 {t("Expertise Comptable & Commissariat aux Comptes", "Accounting Expertise & Statutory Audit")}
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold leading-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold leading-tight mb-6">
               <span className="text-white">
                 {t("Nous accompagnons votre", "We drive your")}
               </span>
@@ -108,13 +109,14 @@ export default function Hero() {
             </h1>
 
             <p className="text-white/60 text-lg md:text-xl font-body mb-10 max-w-2xl leading-relaxed">
-              {t(
-                "Cabinet d'expertise multidisciplinaire specialise dans l'accompagnement comptable, fiscal, administratif et strategique des entreprises en Afrique.",
-                "Multidisciplinary consulting firm specialized in accounting, tax, administrative and strategic support for businesses across Africa."
+              {lang === "fr" ? (
+                <>Cabinet d'expertise <strong className="text-white/80">multidisciplinaire</strong> spécialisé dans l'<strong className="text-white/80">accompagnement comptable</strong>, <strong className="text-white/80">fiscal</strong>, <strong className="text-white/80">administratif</strong> et <strong className="text-white/80">stratégique</strong> des entreprises en <strong className="text-white/80">Afrique</strong>.</>
+              ) : (
+                <><strong className="text-white/80">Multidisciplinary consulting firm</strong> specialized in <strong className="text-white/80">accounting</strong>, <strong className="text-white/80">tax</strong>, <strong className="text-white/80">administrative</strong> and <strong className="text-white/80">strategic support</strong> for businesses across <strong className="text-white/80">Africa</strong>.</>
               )}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 items-center sm:items-start">
               <Link to="/services" className="btn-accent text-center">
                 {t("Demander un audit", "Request an audit")}
               </Link>
@@ -140,7 +142,7 @@ export default function Hero() {
           {[
             { value: "3", label: t("Bureaux en Afrique", "Offices in Africa") },
             { value: "16+", label: t("Domaines d'expertise", "Areas of expertise") },
-            { value: "5+", label: t("Associes experts", "Expert partners") },
+            { value: "5+", label: t("Associés experts", "Expert partners") },
             { value: "100%", label: t("Engagement client", "Client commitment") },
           ].map((stat, i) => (
             <div

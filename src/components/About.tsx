@@ -9,7 +9,7 @@ const pillars = [
     icon: Eye,
     titleFr: "Notre Vision",
     titleEn: "Our Vision",
-    textFr: "Contribuer a la performance, la structuration et la croissance durable des entreprises et organisations au Cameroun et en zone CEMAC.",
+    textFr: "Contribuer à la performance, la structuration et la croissance durable des entreprises et organisations au Cameroun et en zone CEMAC.",
     textEn: "Contributing to the performance, structuring and sustainable growth of businesses and organizations in Cameroon and the CEMAC zone.",
     accent: "blue" as const,
   },
@@ -17,7 +17,7 @@ const pillars = [
     icon: Target,
     titleFr: "Notre Mission",
     titleEn: "Our Mission",
-    textFr: "Offrir aux entreprises, institutions et porteurs de projets un accompagnement complet base sur l'expertise, l'ethique, la rigueur et l'impact durable.",
+    textFr: "Offrir aux entreprises, institutions et porteurs de projets un accompagnement complet basé sur l'expertise, l'éthique, la rigueur et l'impact durable.",
     textEn: "Providing businesses, institutions and project leaders with comprehensive support based on expertise, ethics, rigor and lasting impact.",
     accent: "blue" as const,
   },
@@ -25,7 +25,7 @@ const pillars = [
     icon: Heart,
     titleFr: "Nos Valeurs",
     titleEn: "Our Values",
-    textFr: "Professionnalisme, Integrite, Performance, Durabilite, Impact.",
+    textFr: "Professionnalisme, Intégrité, Performance, Durabilité, Impact.",
     textEn: "Professionalism, Integrity, Performance, Sustainability, Impact.",
     accent: "red" as const,
   },
@@ -33,7 +33,7 @@ const pillars = [
     icon: TrendingUp,
     titleFr: "Objectifs",
     titleEn: "Objectives",
-    textFr: "Amelioration continue des processus, conformite aux normes et reglementations, gestion proactive des risques.",
+    textFr: "Amélioration continue des processus, conformité aux normes et réglementations, gestion proactive des risques.",
     textEn: "Continuous process improvement, regulatory compliance, proactive risk management.",
     accent: "blue" as const,
   },
@@ -45,14 +45,14 @@ const iconColors = {
 };
 
 export default function About() {
-  const { t } = useLang();
+  const { lang, t } = useLang();
   const { ref, isVisible } = useScrollAnimation();
 
   return (
     <section id="about" className="section-padding bg-background pattern-dots relative" ref={ref}>
-      {/* Red decorative accent */}
+      {/* Red decorative accent — hidden on mobile to prevent overflow */}
       <div
-        className="absolute top-16 right-16 w-24 h-24 rounded-full opacity-[0.04] pointer-events-none"
+        className="absolute top-16 right-16 w-24 h-24 rounded-full opacity-[0.04] pointer-events-none hidden sm:block"
         style={{ background: "radial-gradient(circle, hsl(358 73% 52%), transparent 70%)" }}
       />
       <div
@@ -78,7 +78,7 @@ export default function About() {
               <img
                 src={serviceAudit}
                 alt={t("Expertise comptable", "Accounting expertise")}
-                className="w-full h-[500px] object-cover"
+                className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-biex-navy/50 to-transparent" />
@@ -121,9 +121,10 @@ export default function About() {
             initial={{ opacity: 0, x: 40 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
+            className="text-center sm:text-left"
           >
             <span className="font-subheading font-semibold text-sm uppercase tracking-[0.2em]" style={{ color: "hsl(214 65% 52%)" }}>
-              {t("A propos de nous", "About us")}
+              {t("À propos de nous", "About us")}
             </span>
             <h2 className="section-title mt-3 mb-4">
               Biex Conseils
@@ -136,16 +137,21 @@ export default function About() {
             </p>
 
             {/* Red + Blue separator */}
-            <div className="flex items-center gap-2 mb-6">
+            <div className="flex items-center gap-2 mb-6 justify-center sm:justify-start">
               <div className="w-12 h-[2px]" style={{ background: "hsl(358 73% 52%)" }} />
               <div className="w-2 h-2 rounded-full" style={{ background: "hsl(358 73% 52%)" }} />
               <div className="w-8 h-[2px]" style={{ background: "hsl(358 73% 52%)" }} />
             </div>
 
             <p className="section-subtitle mb-8">
-              {t(
-                "BIEX Conseils est un cabinet d'expertise multidisciplinaire specialise dans l'accompagnement comptable, fiscal, administratif, social, audit, entrepreneurial et strategique des entreprises, institutions, organisations et porteurs de projets. Notre approche repose sur l'investissement intellectuel, la performance, l'ethique professionnelle et la durabilite.",
-                "BIEX Conseils is a multidisciplinary consulting firm specialized in accounting, tax, administrative, social, audit, entrepreneurial and strategic support for businesses, institutions, organizations and project leaders. Our approach is based on intellectual investment, performance, professional ethics and sustainability."
+              {lang === "fr" ? (
+                <>
+                  <strong className="text-foreground">BIEX Conseils</strong> est un cabinet d'expertise multidisciplinaire spécialisé dans l'accompagnement <strong className="text-foreground">comptable</strong>, <strong className="text-foreground">fiscal</strong>, <strong className="text-foreground">administratif</strong>, <strong className="text-foreground">social</strong>, <strong className="text-foreground">audit</strong>, <strong className="text-foreground">entrepreneurial</strong> et <strong className="text-foreground">stratégique</strong> des entreprises, institutions, organisations et porteurs de projets. Notre approche repose sur l'<strong className="text-foreground">investissement intellectuel</strong>, la <strong className="text-foreground">performance</strong>, l'<strong className="text-foreground">éthique professionnelle</strong> et la <strong className="text-foreground">durabilité</strong>.
+                </>
+              ) : (
+                <>
+                  <strong className="text-foreground">BIEX Conseils</strong> is a multidisciplinary consulting firm specialized in <strong className="text-foreground">accounting</strong>, <strong className="text-foreground">tax</strong>, <strong className="text-foreground">administrative</strong>, <strong className="text-foreground">social</strong>, <strong className="text-foreground">audit</strong>, <strong className="text-foreground">entrepreneurial</strong> and <strong className="text-foreground">strategic support</strong> for businesses, institutions, organizations and project leaders. Our approach is based on <strong className="text-foreground">intellectual investment</strong>, <strong className="text-foreground">performance</strong>, <strong className="text-foreground">professional ethics</strong> and <strong className="text-foreground">sustainability</strong>.
+                </>
               )}
             </p>
           </motion.div>
@@ -161,14 +167,14 @@ export default function About() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isVisible ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.4 + i * 0.1 }}
-                className={`rounded-xl p-6 card-hover group shimmer red-border-top`}
+                className={`rounded-xl p-6 card-hover group shimmer red-border-top text-center sm:text-left`}
                 style={{
                   background: "hsl(var(--card))",
                   border: "1px solid hsl(var(--border))",
                 }}
               >
                 <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-300"
+                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 mx-auto sm:mx-0"
                   style={{ background: colors.bg }}
                 >
                   <p.icon className="w-6 h-6" style={{ color: colors.color }} />

@@ -8,10 +8,10 @@ import logo from "@/assets/logo.jpeg";
 const navItems = {
   fr: [
     { label: "Accueil", href: "/" },
-    { label: "A propos", href: "/about" },
+    { label: "À propos", href: "/about" },
     { label: "Services", href: "/services" },
-    { label: "Equipe", href: "/team" },
-    { label: "Reseau", href: "/network" },
+    { label: "Équipe", href: "/team" },
+    { label: "Réseau", href: "/network" },
     { label: "Contact", href: "/contact" },
   ],
   en: [
@@ -40,6 +40,16 @@ export default function Navbar() {
   useEffect(() => {
     setMobileOpen(false);
   }, [location.pathname]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
 
   const items = navItems[lang];
   const isHome = location.pathname === "/";
@@ -167,9 +177,9 @@ export default function Navbar() {
                   >
                     <Link
                       to={item.href}
-                      className={`block font-subheading text-sm font-medium py-3 transition-colors ${isActive ? "text-white" : "text-white/70 hover:text-white"
+                      className={`block font-subheading text-sm font-medium py-4 transition-colors ${isActive ? "text-white" : "text-white/70 hover:text-white"
                         }`}
-                      style={{ borderBottom: "1px solid rgba(220,53,69,0.06)" }}
+                      style={{ borderBottom: "1px solid rgba(220,53,69,0.06)", minHeight: "44px" }}
                     >
                       <span className="flex items-center gap-2">
                         {isActive && (
