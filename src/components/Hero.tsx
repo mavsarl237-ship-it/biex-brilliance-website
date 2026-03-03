@@ -90,7 +90,7 @@ export default function Hero() {
             className="text-center sm:text-left"
           >
             {/* Badge */}
-            <div className="badge-blue mb-8 mx-auto sm:mx-0">
+            <div className="hidden sm:inline-flex badge-blue mb-8 mx-auto sm:mx-0">
               <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: "hsl(214 65% 55%)" }} />
               <span className="text-white/80 text-sm font-medium font-subheading">
                 {t("Expertise Comptable & Commissariat aux Comptes", "Accounting Expertise & Statutory Audit")}

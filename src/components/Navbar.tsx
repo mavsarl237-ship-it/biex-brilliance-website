@@ -74,7 +74,7 @@ export default function Navbar() {
           <img
             src={logo}
             alt="Biex Conseils"
-            className="h-10 md:h-12 w-auto object-contain rounded-lg transition-all duration-300 group-hover:shadow-lg"
+            className="h-14 sm:h-10 md:h-12 w-auto object-contain rounded-lg transition-all duration-300 group-hover:shadow-lg"
             style={{ boxShadow: "0 0 0 1px rgba(220,53,69,0.15)" }}
           />
           <div className="hidden sm:block">

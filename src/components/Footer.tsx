@@ -48,7 +48,7 @@ export default function Footer() {
               <img
                 src={logo}
                 alt="Biex Conseils"
-                className="h-12 w-auto object-contain rounded-lg transition-all duration-300 group-hover:shadow-lg"
+                className="h-16 sm:h-12 w-auto object-contain rounded-lg transition-all duration-300 group-hover:shadow-lg"
                 style={{ boxShadow: "0 0 0 1px rgba(59,130,220,0.15)" }}
               />
               <div>
@@ -56,7 +56,7 @@ export default function Footer() {
                   <span style={{ color: "hsl(214 60% 68%)" }}>Biex</span>
                   <span className="text-white/80 ml-1">Conseils</span>
                 </div>
-                <div className="text-white/40 text-xs font-body">
+                <div className="hidden sm:block text-white/40 text-xs font-body">
                   {t("Expertise Comptable & Commissariat aux Comptes", "Accounting Expertise & Statutory Audit")}
                 </div>
               </div>
