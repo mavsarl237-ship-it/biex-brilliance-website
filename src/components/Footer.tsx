@@ -7,12 +7,13 @@ export default function Footer() {
   const { lang, t } = useLang();
 
   const links = [
-    { labelFr: "Accueil", labelEn: "Home", href: "/" },
-    { labelFr: "À propos", labelEn: "About", href: "/about" },
-    { labelFr: "Services", labelEn: "Services", href: "/services" },
-    { labelFr: "Équipe", labelEn: "Team", href: "/team" },
-    { labelFr: "Réseau", labelEn: "Network", href: "/network" },
-    { labelFr: "Contact", labelEn: "Contact", href: "/contact" },
+    { labelFr: "Accueil", labelEn: "Home", labelDe: "Startseite", labelAr: "الرئيسية", href: "/" },
+    { labelFr: "À propos", labelEn: "About", labelDe: "Über uns", labelAr: "من نحن", href: "/about" },
+    { labelFr: "Services", labelEn: "Services", labelDe: "Leistungen", labelAr: "خدماتنا", href: "/services" },
+    { labelFr: "Équipe", labelEn: "Team", labelDe: "Team", labelAr: "الفريق", href: "/team" },
+    { labelFr: "Réseau", labelEn: "Network", labelDe: "Netzwerk", labelAr: "الشبكة", href: "/network" },
+    { labelFr: "Documentation", labelEn: "Documentation", labelDe: "Dokumentation", labelAr: "توثيق", href: "/documentation" },
+    { labelFr: "Contact", labelEn: "Contact", labelDe: "Kontakt", labelAr: "اتصل بنا", href: "/contact" },
   ];
 
   return (
@@ -57,14 +58,27 @@ export default function Footer() {
                   <span className="text-white/80 ml-1">Conseils</span>
                 </div>
                 <div className="hidden sm:block text-white/40 text-xs font-body">
-                  {t("Expertise Comptable & Commissariat aux Comptes", "Accounting Expertise & Statutory Audit")}
+                  {t(
+                    "Audit - Gestion - Finance - Projet - Stratégie - RH",
+                    "Audit - Management - Finance - Project - Strategy - HR",
+                    "Audit - Management - Finanzen - Projekt - Strategie - HR",
+                    "تدقيق - إدارة - مالية - مشاريع - استراتيجية - موارد بشرية"
+                  )}
                 </div>
               </div>
             </Link>
-            <p className="text-white/50 text-sm font-body leading-relaxed max-w-md mb-4">
+            <p className="text-white/50 text-sm font-body leading-relaxed max-w-md mb-4 text-justify">
               {lang === "fr" ? (
                 <>
                   <strong className="text-white/80">Cabinet d'audit et de conseils</strong> en gestion, <strong className="text-white/80">partenaire polyvalent</strong> qui apporte <strong className="text-white/80">expertise technique</strong> et <strong className="text-white/80">conseil stratégique</strong> pour <strong className="text-white/80">sécuriser</strong> et <strong className="text-white/80">développer</strong> les activités de toute structure.
+                </>
+              ) : lang === "de" ? (
+                <>
+                  <strong className="text-white/80">Wirtschaftsprüfungs- und Beratungsunternehmen</strong>, ein <strong className="text-white/80">vielseitiger Partner</strong>, der <strong className="text-white/80">technische Expertise</strong> und <strong className="text-white/80">strategische Beratung</strong> bietet, um die Aktivitäten jeder Organisation zu <strong className="text-white/80">sichern</strong> und zu <strong className="text-white/80">entwickeln</strong>.
+                </>
+              ) : lang === "ar" ? (
+                <>
+                  <strong className="text-white/80">شركة تدقيق واستشارات إدارية</strong>، <strong className="text-white/80">شريك متعدد المهارات</strong> يقدم <strong className="text-white/80">خبرة تقنية</strong> و<strong className="text-white/80">استشارات استراتيجية</strong> <strong className="text-white/80">لتأمين</strong> و<strong className="text-white/80">تطوير</strong> أنشطة أي مؤسسة.
                 </>
               ) : (
                 <>
@@ -80,7 +94,7 @@ export default function Footer() {
           {/* Links */}
           <div>
             <h4 className="font-heading font-bold text-sm mb-4" style={{ color: "hsl(214 60% 68%)" }}>
-              {t("Liens rapides", "Quick links")}
+              {t("Liens rapides", "Quick links", "Schnellzugriff", "روابط سريعة")}
             </h4>
             <ul className="space-y-2.5">
               {links.map((link) => (
@@ -89,7 +103,7 @@ export default function Footer() {
                     to={link.href}
                     className="text-white/50 text-sm font-body transition-all duration-300 relative group inline-block"
                   >
-                    {t(link.labelFr, link.labelEn)}
+                    {t(link.labelFr, link.labelEn, link.labelDe, link.labelAr)}
                     <span
                       className="absolute -bottom-0.5 left-0 w-0 h-[1px] transition-all duration-300 group-hover:w-full"
                       style={{ background: "hsl(358 73% 52%)" }}
@@ -103,12 +117,12 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h4 className="font-heading font-bold text-sm mb-4" style={{ color: "hsl(214 60% 68%)" }}>
-              {t("Coordonnées", "Contact info")}
+              {t("Coordonnées", "Contact info", "Kontaktdaten", "بيانات الاتصال")}
             </h4>
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-sm">
                 <Phone className="w-4 h-4 mt-0.5 shrink-0" style={{ color: "hsl(358 73% 52%)" }} />
-                <span className="text-white/50 font-body">+237 622 169 546<br />+237 672 741 295</span>
+                <span className="text-white/50 font-body">+237 622 169 549<br />+237 672 741 295</span>
               </li>
               <li className="flex items-start gap-2 text-sm">
                 <Mail className="w-4 h-4 mt-0.5 shrink-0" style={{ color: "hsl(358 73% 52%)" }} />
@@ -127,10 +141,10 @@ export default function Footer() {
           style={{ borderTop: "1px solid rgba(220,53,69,0.08)" }}
         >
           <p className="text-white/30 text-xs font-body">
-            &copy; {new Date().getFullYear()} Biex Conseils. {t("Tous droits réservés.", "All rights reserved.")}
+            &copy; {new Date().getFullYear()} Biex Conseils. {t("Tous droits réservés.", "All rights reserved.", "Alle Rechte vorbehalten.", "جميع الحقوق محفوظة.")}
           </p>
           <p className="text-white/20 text-xs font-body">
-            {t("Mentions légales", "Legal notice")}
+            {t("Mentions légales", "Legal notice", "Impressum", "إشعار قانوني")}
           </p>
         </div>
       </div>

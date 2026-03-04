@@ -9,32 +9,48 @@ const pillars = [
     icon: Eye,
     titleFr: "Notre Vision",
     titleEn: "Our Vision",
+    titleDe: "Unsere Vision",
+    titleAr: "رؤيتنا",
     textFr: "Contribuer à la performance, la structuration et la croissance durable des entreprises et organisations au Cameroun et en zone CEMAC.",
     textEn: "Contributing to the performance, structuring and sustainable growth of businesses and organizations in Cameroon and the CEMAC zone.",
+    textDe: "Beitrag zur Leistung, Strukturierung und nachhaltigen Entwicklung von Unternehmen und Organisationen in Kamerun und der CEMAC-Zone.",
+    textAr: "المساهمة في أداء وهيكلة ونمو مستدام للشركات والمنظمات في الكاميرون ومنطقة CEMAC.",
     accent: "blue" as const,
   },
   {
     icon: Target,
     titleFr: "Notre Mission",
     titleEn: "Our Mission",
+    titleDe: "Unsere Mission",
+    titleAr: "مهمتنا",
     textFr: "Offrir aux entreprises, institutions et porteurs de projets un accompagnement complet basé sur l'expertise, l'éthique, la rigueur et l'impact durable.",
     textEn: "Providing businesses, institutions and project leaders with comprehensive support based on expertise, ethics, rigor and lasting impact.",
+    textDe: "Unternehmen, Institutionen und Projektträgern eine umfassende Begleitung bieten, basierend auf Expertise, Ethik, Sorgfalt und nachhaltiger Wirkung.",
+    textAr: "تقديم دعم شامل للشركات والمؤسسات وأصحاب المشاريع يعتمد على الخبرة والأخلاق والدقة والتأثير المستدام.",
     accent: "blue" as const,
   },
   {
     icon: Heart,
     titleFr: "Nos Valeurs",
     titleEn: "Our Values",
+    titleDe: "Unsere Werte",
+    titleAr: "قيمنا",
     textFr: "Professionnalisme, Intégrité, Performance, Durabilité, Impact.",
     textEn: "Professionalism, Integrity, Performance, Sustainability, Impact.",
+    textDe: "Professionalität, Integrität, Leistung, Nachhaltigkeit, Wirkung.",
+    textAr: "الاحترافية، النزاهة، الأداء، الاستدامة، التأثير.",
     accent: "red" as const,
   },
   {
     icon: TrendingUp,
     titleFr: "Objectifs",
     titleEn: "Objectives",
+    titleDe: "Ziele",
+    titleAr: "الأهداف",
     textFr: "Amélioration continue des processus, conformité aux normes et réglementations, gestion proactive des risques.",
     textEn: "Continuous process improvement, regulatory compliance, proactive risk management.",
+    textDe: "Kontinuierliche Prozessverbesserung, Einhaltung von Vorschriften, proaktives Risikomanagement.",
+    textAr: "تحسين العمليات المستمر، الامتثال للمعايير واللوائح، إدارة المخاطر الاستباقية.",
     accent: "blue" as const,
   },
 ];
@@ -77,7 +93,7 @@ export default function About() {
             >
               <img
                 src={serviceAudit}
-                alt={t("Expertise comptable", "Accounting expertise")}
+                alt={t("Expertise comptable", "Accounting expertise", "Buchhaltungsexpertise", "خبرة محاسبية")}
                 className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover"
                 loading="lazy"
               />
@@ -94,8 +110,8 @@ export default function About() {
                 color: "#fff",
               }}
             >
-              <div className="text-3xl font-heading font-bold">CEMAC</div>
-              <div className="text-sm font-body opacity-80">{t("Zone d'intervention", "Area of operation")}</div>
+              <div className="text-sm font-body opacity-80">{t("Zones d'interventions", "Area of operation", "Einsatzgebiet", "منطقة العمل")}</div>
+              <div className="text-3xl font-heading font-bold">CEMAC, UEMOA, AES</div>
             </motion.div>
 
             {/* Decorative border */}
@@ -124,16 +140,21 @@ export default function About() {
             className="text-center sm:text-left"
           >
             <span className="font-subheading font-semibold text-sm uppercase tracking-[0.2em]" style={{ color: "hsl(214 65% 52%)" }}>
-              {t("À propos de nous", "About us")}
+              {t("À propos de nous", "About us", "Über uns", "من نحن")}
             </span>
             <h2 className="section-title mt-3 mb-4">
               Biex Conseils
             </h2>
             <p className="font-subheading font-semibold text-lg mb-4" style={{ color: "hsl(220 45% 30%)" }}>
-              {t("Expertise Comptable & Commissariat aux Comptes", "Accounting Expertise & Statutory Audit")}
+              {t(
+                "Audit - Gestion - Finance - Projet - Stratégie - RH",
+                "Audit - Management - Finance - Project - Strategy - HR",
+                "Audit - Management - Finanzen - Projekt - Strategie - HR",
+                "تدقيق - إدارة - مالية - مشاريع - استراتيجية - موارد بشرية"
+              )}
             </p>
             <p className="font-subheading font-medium mb-6 text-gradient-blue text-base">
-              Impact -- Performance -- {t("Accompagnement Durable", "Sustainable Support")}
+              Impact -- Performance -- {t("Accompagnement Durable", "Sustainable Support", "Nachhaltige Begleitung", "الدعم المستدام")}
             </p>
 
             {/* Red + Blue separator */}
@@ -143,10 +164,18 @@ export default function About() {
               <div className="w-8 h-[2px]" style={{ background: "hsl(358 73% 52%)" }} />
             </div>
 
-            <p className="section-subtitle mb-8">
+            <p className="section-subtitle mb-8 text-justify">
               {lang === "fr" ? (
                 <>
                   <strong className="text-foreground">BIEX Conseils</strong> est un cabinet d'expertise multidisciplinaire spécialisé dans l'accompagnement <strong className="text-foreground">comptable</strong>, <strong className="text-foreground">fiscal</strong>, <strong className="text-foreground">administratif</strong>, <strong className="text-foreground">social</strong>, <strong className="text-foreground">audit</strong>, <strong className="text-foreground">entrepreneurial</strong> et <strong className="text-foreground">stratégique</strong> des entreprises, institutions, organisations et porteurs de projets. Notre approche repose sur l'<strong className="text-foreground">investissement intellectuel</strong>, la <strong className="text-foreground">performance</strong>, l'<strong className="text-foreground">éthique professionnelle</strong> et la <strong className="text-foreground">durabilité</strong>.
+                </>
+              ) : lang === "de" ? (
+                <>
+                  <strong className="text-foreground">BIEX Conseils</strong> ist eine multidisziplinäre Beratungsfirma, spezialisiert auf <strong className="text-foreground">Buchhaltung</strong>, <strong className="text-foreground">Steuer</strong>, <strong className="text-foreground">Verwaltung</strong>, <strong className="text-foreground">Soziales</strong>, <strong className="text-foreground">Audit</strong>, <strong className="text-foreground">Unternehmertum</strong> und <strong className="text-foreground">strategische Begleitung</strong> von Unternehmen, Institutionen, Organisationen und Projektträgern. Unser Ansatz basiert auf <strong className="text-foreground">intellektuellem Engagement</strong>, <strong className="text-foreground">Leistung</strong>, <strong className="text-foreground">Berufsethik</strong> und <strong className="text-foreground">Nachhaltigkeit</strong>.
+                </>
+              ) : lang === "ar" ? (
+                <>
+                  <strong className="text-foreground">BIEX Conseils</strong> هي شركة استشارات متعددة التخصصات متخصصة في الدعم <strong className="text-foreground">المحاسبي</strong> و<strong className="text-foreground">الضريبي</strong> و<strong className="text-foreground">الإداري</strong> و<strong className="text-foreground">الاجتماعي</strong> و<strong className="text-foreground">التدقيق</strong> و<strong className="text-foreground">ريادة الأعمال</strong> و<strong className="text-foreground">الاستراتيجي</strong> للشركات والمؤسسات والمنظمات وأصحاب المشاريع. يعتمد نهجنا على <strong className="text-foreground">الاستثمار الفكري</strong> و<strong className="text-foreground">الأداء</strong> و<strong className="text-foreground">الأخلاق المهنية</strong> و<strong className="text-foreground">الاستدامة</strong>.
                 </>
               ) : (
                 <>
@@ -180,10 +209,10 @@ export default function About() {
                   <p.icon className="w-6 h-6" style={{ color: colors.color }} />
                 </div>
                 <h3 className="font-heading font-bold text-lg mb-2 text-foreground">
-                  {t(p.titleFr, p.titleEn)}
+                  {t(p.titleFr, p.titleEn, p.titleDe, p.titleAr)}
                 </h3>
                 <p className="text-muted-foreground text-sm font-body leading-relaxed">
-                  {t(p.textFr, p.textEn)}
+                  {t(p.textFr, p.textEn, p.textDe, p.textAr)}
                 </p>
               </motion.div>
             );

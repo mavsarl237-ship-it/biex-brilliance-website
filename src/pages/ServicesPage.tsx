@@ -8,10 +8,12 @@ const ServicesPage = () => {
     return (
         <Layout>
             <PageBanner
-                title={t("Nos Services", "Our Services")}
+                title={t("Nos Services", "Our Services", "Unsere Leistungen", "خدماتنا")}
                 subtitle={t(
                     "Un accompagnement complet pour securiser et developper vos activites.",
-                    "Comprehensive support to secure and grow your business."
+                    "Comprehensive support to secure and grow your business.",
+                    "Umfassende Unterstützung zur Sicherung und Entwicklung Ihres Unternehmens.",
+                    "دعم شامل لتأمين وتطوير أنشطتكم."
                 )}
             />
             <Services />

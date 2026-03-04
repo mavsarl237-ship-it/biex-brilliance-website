@@ -3,20 +3,43 @@ import { useLang } from "@/contexts/LanguageContext";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Award, Handshake } from "lucide-react";
 
-const partners = ["ACCA", "The Institute of Internal Auditors", "CNAM", "Project Management Institute"];
+import logoCnam from "@/assets/Partenaires de formation/Logo_cnam.gif";
+import logoIntec from "@/assets/Partenaires de formation/PDFtoJPG.me-1.jpg";
+import logoIia from "@/assets/Partenaires de formation/images.png";
+import logoPmi from "@/assets/Partenaires de formation/project-management-institute.svg";
+
+const partners = [
+  { name: "CNAM", logo: logoCnam },
+  { name: "ACCA", logo: logoIntec },
+  { name: "The Institute of Internal Auditors", logo: logoIia },
+  { name: "Project Management Institute", logo: logoPmi },
+];
+import certPmp from "@/assets/certifications/pmi-pmp.webp";
+import certPmpAcp from "@/assets/certifications/pmi-acp-600px14274082391282612348.webp";
+import certCia from "@/assets/certifications/images.png";
+import certDiplFr from "@/assets/certifications/images.jpg";
+import certCics from "@/assets/certifications/image.png";
+import certSage from "@/assets/certifications/sage.jpg";
+import certSap from "@/assets/certifications/SAP_2011_logo.svg.png";
+import certFmva from "@/assets/certifications/fmva.png";
+import certCbca from "@/assets/certifications/cbca.jpg";
+import certFpap from "@/assets/certifications/1755056190971.jpg";
+import certCmsa from "@/assets/certifications/1738539199052.jpg";
+import certLibf from "@/assets/certifications/LIBF-black-002.png";
+
 const certifications = [
-  { name: "PMP", logoUrl: "https://icon.horse/icon/pmi.org" },
-  { name: "PMP-ACP", logoUrl: "https://icon.horse/icon/pmi.org" },
-  { name: "CIA", logoUrl: "https://icon.horse/icon/theiia.org" },
-  { name: "DiplFR", logoUrl: "https://icon.horse/icon/accaglobal.com" },
-  { name: "CICS", logoUrl: "https://icon.horse/icon/theiic.org" },
-  { name: "Sage", logoUrl: "https://icon.horse/icon/sage.com" },
-  { name: "SAP", logoUrl: "https://icon.horse/icon/sap.com" },
-  { name: "FMVA", logoUrl: "https://icon.horse/icon/corporatefinanceinstitute.com" },
-  { name: "CBCA", logoUrl: "https://icon.horse/icon/corporatefinanceinstitute.com" },
-  { name: "FPAP", logoUrl: "https://icon.horse/icon/afponline.org" },
-  { name: "CMSA", logoUrl: "https://icon.horse/icon/corporatefinanceinstitute.com" },
-  { name: "LIBF", logoUrl: "https://icon.horse/icon/libf.ac.uk" },
+  { name: "PMP", logo: certPmp },
+  { name: "PMP-ACP", logo: certPmpAcp },
+  { name: "CIA", logo: certCia },
+  { name: "ACCA", logo: certDiplFr },
+  { name: "CICS", logo: certCics },
+  { name: "Sage", logo: certSage },
+  { name: "SAP", logo: certSap },
+  { name: "FMVA", logo: certFmva },
+  { name: "CBCA", logo: certCbca },
+  { name: "FPAP", logo: certFpap },
+  { name: "CMSA", logo: certCmsa },
+  { name: "LIBF", logo: certLibf },
 ];
 
 export default function Partners() {
@@ -36,23 +59,31 @@ export default function Partners() {
           <div className="flex items-center gap-3 mb-8">
             <Handshake className="w-6 h-6" style={{ color: "hsl(358 73% 52%)" }} />
             <h2 className="font-heading font-bold text-2xl text-foreground">
-              {t("Partenaires de formation", "Training Partners")}
+              {t("Partenaires de formation", "Training Partners", "Schulungspartner", "شركاء التدريب")}
             </h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {partners.map((p, i) => (
               <motion.div
-                key={p}
+                key={p.name}
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={isVisible ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.3, delay: i * 0.1 }}
-                className="rounded-xl p-6 flex items-center justify-center text-center font-subheading font-semibold text-sm text-foreground card-hover shimmer"
+                className="rounded-xl p-6 flex flex-col items-center justify-center text-center card-hover shimmer group bg-white hover:shadow-lg transition-all duration-300"
                 style={{
-                  background: "hsl(var(--card))",
                   border: "1px solid rgba(220,53,69,0.12)",
                 }}
               >
-                {p}
+                <div className="h-20 w-full flex items-center justify-center mb-4">
+                  <img
+                    src={p.logo}
+                    alt={`Logo ${p.name}`}
+                    className="max-h-full max-w-full object-contain grayscale-[0.6] group-hover:grayscale-0 transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-110"
+                  />
+                </div>
+                <span className="font-subheading text-xs font-semibold text-center mt-auto" style={{ color: "hsl(214 65% 48%)" }}>
+                  {p.name}
+                </span>
               </motion.div>
             ))}
           </div>
@@ -70,7 +101,7 @@ export default function Partners() {
           <div className="flex items-center gap-3 mb-8">
             <Award className="w-6 h-6" style={{ color: "hsl(358 73% 52%)" }} />
             <h2 className="font-heading font-bold text-2xl text-foreground">
-              {t("Nos Certifications", "Our Certifications")}
+              {t("Nos Certifications", "Our Certifications", "Unsere Zertifizierungen", "شهاداتنا")}
             </h2>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
@@ -87,16 +118,9 @@ export default function Partners() {
               >
                 <div className="h-16 w-full flex items-center justify-center mb-3">
                   <img
-                    src={cert.logoUrl}
+                    src={cert.logo}
                     alt={`Logo ${cert.name}`}
                     className="max-h-full max-w-full object-contain grayscale-[0.8] group-hover:grayscale-0 transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-110"
-                    onError={(e) => {
-                      // Fallback text if image fails to load
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                      target.parentElement?.classList.add('fallback-text');
-                      if (target.parentElement) target.parentElement.innerHTML = `<span class="font-bold text-gray-400 opacity-60">${cert.name}</span>`;
-                    }}
                   />
                 </div>
                 <span className="font-subheading text-xs font-semibold text-center mt-auto" style={{ color: "hsl(214 65% 48%)" }}>

@@ -9,10 +9,12 @@ const NetworkPage = () => {
     return (
         <Layout>
             <PageBanner
-                title={t("Notre Reseau", "Our Network")}
+                title={t("Notre Reseau", "Our Network", "Unser Netzwerk", "شبكتنا")}
                 subtitle={t(
                     "Bureaux et partenaires a travers l'Afrique.",
-                    "Offices and partners across Africa."
+                    "Offices and partners across Africa.",
+                    "Büros und Partner in ganz Afrika.",
+                    "مكاتب وشركاء عبر أفريقيا."
                 )}
             />
             <NetworkSection />

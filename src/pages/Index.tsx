@@ -6,6 +6,7 @@ import Services from "@/components/Services";
 import TeamSection from "@/components/TeamSection";
 import NetworkSection from "@/components/NetworkSection";
 import Partners from "@/components/Partners";
+import References from "@/components/References";
 import ContactSection from "@/components/ContactSection";
 
 const HomePage = () => {
@@ -19,6 +20,7 @@ const HomePage = () => {
         <TeamSection />
         <NetworkSection />
         <Partners />
+        <References />
         <ContactSection />
       </Layout>
     </>

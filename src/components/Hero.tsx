@@ -6,10 +6,12 @@ import heroImg from "@/assets/hero-meeting.jpg";
 
 const wordsFr = ["Performance", "Croissance", "Conformité", "Transformation", "Structuration", "Rentabilité"];
 const wordsEn = ["Performance", "Growth", "Compliance", "Transformation", "Structuring", "Profitability"];
+const wordsDe = ["Leistung", "Wachstum", "Compliance", "Transformation", "Strukturierung", "Rentabilität"];
+const wordsAr = ["الأداء", "النمو", "الامتثال", "التحول", "الهيكلة", "الربحية"];
 
 export default function Hero() {
   const { lang, t } = useLang();
-  const words = lang === "fr" ? wordsFr : wordsEn;
+  const words = lang === "fr" ? wordsFr : lang === "de" ? wordsDe : lang === "ar" ? wordsAr : wordsEn;
   const typedText = useTypingEffect(words, 80, 50, 1800);
 
   return (
@@ -91,15 +93,19 @@ export default function Hero() {
           >
             {/* Badge */}
             <div className="hidden sm:inline-flex badge-blue mb-8 mx-auto sm:mx-0">
-              <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: "hsl(214 65% 55%)" }} />
               <span className="text-white/80 text-sm font-medium font-subheading">
-                {t("Expertise Comptable & Commissariat aux Comptes", "Accounting Expertise & Statutory Audit")}
+                {t(
+                  "Audit - Gestion - Finance - Projet - Stratégie - RH",
+                  "Audit - Management - Finance - Project - Strategy - HR",
+                  "Audit - Management - Finanzen - Projekt - Strategie - HR",
+                  "تدقيق - إدارة - مالية - مشاريع - استراتيجية - موارد بشرية"
+                )}
               </span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold leading-tight mb-6">
               <span className="text-white">
-                {t("Nous accompagnons votre", "We drive your")}
+                {t("Nous accompagnons votre", "We drive your", "Wir treiben Ihr", "نحن ندفع")}
               </span>
               <br />
               <span className="text-gradient-blue">
@@ -108,9 +114,13 @@ export default function Hero() {
               </span>
             </h1>
 
-            <p className="text-white/60 text-lg md:text-xl font-body mb-10 max-w-2xl leading-relaxed">
+            <p className="text-white/60 text-lg md:text-xl font-body mb-10 max-w-2xl leading-relaxed text-justify sm:text-left mx-auto sm:mx-0">
               {lang === "fr" ? (
                 <>Cabinet d'expertise <strong className="text-white/80">multidisciplinaire</strong> spécialisé dans l'<strong className="text-white/80">accompagnement comptable</strong>, <strong className="text-white/80">fiscal</strong>, <strong className="text-white/80">administratif</strong> et <strong className="text-white/80">stratégique</strong> des entreprises en <strong className="text-white/80">Afrique</strong>.</>
+              ) : lang === "de" ? (
+                <><strong className="text-white/80">Multidisziplinäre Beratungsfirma</strong>, spezialisiert auf <strong className="text-white/80">Buchhaltung</strong>, <strong className="text-white/80">Steuer</strong>, <strong className="text-white/80">Verwaltung</strong> und <strong className="text-white/80">strategische Begleitung</strong> von Unternehmen in <strong className="text-white/80">Afrika</strong>.</>
+              ) : lang === "ar" ? (
+                <><strong className="text-white/80">شركة استشارات متعددة التخصصات</strong> متخصصة في <strong className="text-white/80">المحاسبة</strong> و<strong className="text-white/80">الضرائب</strong> و<strong className="text-white/80">الإدارة</strong> و<strong className="text-white/80">الدعم الاستراتيجي</strong> للشركات في <strong className="text-white/80">أفريقيا</strong>.</>
               ) : (
                 <><strong className="text-white/80">Multidisciplinary consulting firm</strong> specialized in <strong className="text-white/80">accounting</strong>, <strong className="text-white/80">tax</strong>, <strong className="text-white/80">administrative</strong> and <strong className="text-white/80">strategic support</strong> for businesses across <strong className="text-white/80">Africa</strong>.</>
               )}
@@ -118,10 +128,10 @@ export default function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-4 items-center sm:items-start">
               <Link to="/services" className="btn-accent text-center">
-                {t("Demander un audit", "Request an audit")}
+                {t("Demander un service", "Request a service", "Service anfordern", "طلب خدمة")}
               </Link>
-              <Link to="/contact" className="btn-outline-blue text-center">
-                {t("Nous contacter", "Contact us")}
+              <Link to="/contact" className="px-6 py-3 rounded-xl text-center font-subheading font-semibold text-sm border-2 border-white/30 text-white/90 hover:bg-white/10 hover:border-white/50 transition-all duration-300 backdrop-blur-sm">
+                {t("Nous contacter", "Contact us", "Kontaktieren Sie uns", "اتصل بنا")}
               </Link>
             </div>
           </motion.div>
@@ -140,10 +150,10 @@ export default function Hero() {
           }}
         >
           {[
-            { value: "3", label: t("Bureaux en Afrique", "Offices in Africa") },
-            { value: "16+", label: t("Domaines d'expertise", "Areas of expertise") },
-            { value: "5+", label: t("Associés experts", "Expert partners") },
-            { value: "100%", label: t("Engagement client", "Client commitment") },
+            { value: "3", label: t("Bureaux en Afrique", "Offices in Africa", "Büros in Afrika", "مكاتب في أفريقيا") },
+            { value: "16+", label: t("Domaines d'expertise", "Areas of expertise", "Fachgebiete", "مجالات الخبرة") },
+            { value: "5+", label: t("Associés experts", "Expert partners", "Experten-Partner", "شركاء خبراء") },
+            { value: "100%", label: t("Engagement client", "Client commitment", "Kundenengagement", "التزام العملاء") },
           ].map((stat, i) => (
             <div
               key={i}

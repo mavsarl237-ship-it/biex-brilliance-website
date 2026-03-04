@@ -1,17 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Globe } from "lucide-react";
-import { useLang } from "@/contexts/LanguageContext";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { useLang, LANG_FLAGS, LANG_LABELS, Lang } from "@/contexts/LanguageContext";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.jpeg";
 
-const navItems = {
+const navItems: Record<Lang, { label: string; href: string }[]> = {
   fr: [
     { label: "Accueil", href: "/" },
     { label: "À propos", href: "/about" },
     { label: "Services", href: "/services" },
     { label: "Équipe", href: "/team" },
     { label: "Réseau", href: "/network" },
+    { label: "Documentation", href: "/documentation" },
     { label: "Contact", href: "/contact" },
   ],
   en: [
@@ -20,9 +21,106 @@ const navItems = {
     { label: "Services", href: "/services" },
     { label: "Team", href: "/team" },
     { label: "Network", href: "/network" },
+    { label: "Documentation", href: "/documentation" },
     { label: "Contact", href: "/contact" },
   ],
+  de: [
+    { label: "Startseite", href: "/" },
+    { label: "Über uns", href: "/about" },
+    { label: "Leistungen", href: "/services" },
+    { label: "Team", href: "/team" },
+    { label: "Netzwerk", href: "/network" },
+    { label: "Dokumentation", href: "/documentation" },
+    { label: "Kontakt", href: "/contact" },
+  ],
+  ar: [
+    { label: "الرئيسية", href: "/" },
+    { label: "من نحن", href: "/about" },
+    { label: "خدماتنا", href: "/services" },
+    { label: "الفريق", href: "/team" },
+    { label: "الشبكة", href: "/network" },
+    { label: "توثيق", href: "/documentation" },
+    { label: "اتصل بنا", href: "/contact" },
+  ],
 };
+
+const langs: Lang[] = ["fr", "en", "de", "ar"];
+
+function LanguageDropdown({ onSelect }: { onSelect?: () => void }) {
+  const { lang, setLang } = useLang();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center gap-2 text-sm font-medium text-white/60 hover:text-white/90 transition-colors font-subheading px-2 py-1.5 rounded-lg hover:bg-white/5"
+      >
+        <img
+          src={LANG_FLAGS[lang]}
+          alt={lang}
+          className="w-5 h-[14px] object-cover rounded-sm shadow-sm"
+        />
+        <span>{lang.toUpperCase()}</span>
+        <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -8, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.95 }}
+            transition={{ duration: 0.15 }}
+            className="absolute top-full mt-2 right-0 rounded-xl overflow-hidden shadow-xl z-50 min-w-[160px]"
+            style={{
+              background: "rgba(10, 22, 40, 0.95)",
+              backdropFilter: "blur(20px)",
+              border: "1px solid rgba(220,53,69,0.15)",
+            }}
+          >
+            {langs.map((l) => (
+              <button
+                key={l}
+                onClick={() => {
+                  setLang(l);
+                  setOpen(false);
+                  onSelect?.();
+                }}
+                className={`w-full flex items-center gap-3 px-4 py-3 text-sm font-subheading transition-all duration-200 ${lang === l
+                  ? "text-white bg-white/10"
+                  : "text-white/60 hover:text-white hover:bg-white/5"
+                  }`}
+              >
+                <img
+                  src={LANG_FLAGS[l]}
+                  alt={l}
+                  className="w-6 h-[17px] object-cover rounded shadow-sm"
+                />
+                <span className="font-medium">{LANG_LABELS[l]}</span>
+                {lang === l && (
+                  <span
+                    className="ml-auto w-1.5 h-1.5 rounded-full"
+                    style={{ background: "hsl(358 73% 52%)" }}
+                  />
+                )}
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -118,30 +216,19 @@ export default function Navbar() {
           {/* Separator */}
           <div className="w-px h-6" style={{ background: "rgba(220,53,69,0.2)" }} />
 
-          <button
-            onClick={() => setLang(lang === "fr" ? "en" : "fr")}
-            className="flex items-center gap-1.5 text-sm font-medium text-white/50 hover:text-white/80 transition-colors font-subheading"
-          >
-            <Globe className="w-4 h-4 text-biex-red" style={{ color: "hsl(358 73% 52%)" }} />
-            {lang === "fr" ? "EN" : "FR"}
-          </button>
+          <LanguageDropdown />
 
           <Link
             to="/contact"
             className="btn-primary text-sm py-2.5 px-6"
           >
-            {t("Nous contacter", "Contact us")}
+            {t("Nous contacter", "Contact us", "Kontakt", "اتصل بنا")}
           </Link>
         </div>
 
         {/* Mobile toggle */}
         <div className="flex lg:hidden items-center gap-3">
-          <button
-            onClick={() => setLang(lang === "fr" ? "en" : "fr")}
-            className="text-white/50 hover:text-white/80 transition-colors"
-          >
-            <Globe className="w-5 h-5" style={{ color: "hsl(358 73% 52%)" }} />
-          </button>
+          <LanguageDropdown onSelect={() => setMobileOpen(false)} />
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="text-white/80"
@@ -203,7 +290,7 @@ export default function Navbar() {
                   to="/contact"
                   className="btn-primary block text-center text-sm py-3 mt-4"
                 >
-                  {t("Nous contacter", "Contact us")}
+                  {t("Nous contacter", "Contact us", "Kontakt", "اتصل بنا")}
                 </Link>
               </motion.div>
             </div>
